@@ -11,20 +11,20 @@ import java.math.RoundingMode;
 /**
  *
  *@author kaminahar
- * 
- * Given an array of integers, calculate the fractions of its elements that are positive, negative, and are zeros. 
- * Print the decimal value of each fraction on a new line.
+ 
+ Given an arr of integers, calculate the fractions of its elements that are positive, negative, and are zeros. 
+ Print the decimal value of each fraction on a new line.
  */
 public class plusMinus {
     
     public static void main(String[] args) {
         
         //Variables 
-        int array [] = {-4, 3, -9, 0, 4, 1  };
+        int[] arr = {-4, 3, -9, 0, 4, 1  };
         
         /* 
         Need two counters. 
-        one is used to count negative numbers in the array, one is for positive numbers in the array, and one for zeroes. 
+        one is used to count negative numbers in the arr, one is for positive numbers in the arr, and one for zeroes. 
         */
         int positiveCounter = 0; 
         int negativeCounter = 0;
@@ -39,23 +39,23 @@ public class plusMinus {
         
   
         /* 
-        This is a for loop. ex: " for (int i = 0; i < array.length; i++) { 
+        This is a for loop. ex: " for (int i = 0; i < arr.length; i++) { 
         "  when the conditions are met inside the parenthesis, keep running the code in the brackets. "
         }; 
         
-        The "i" variable is for the index in the array where you are starting from 
-        (in this example we are starting at index 0 which is the first element of the array. 
-        To check all the numbers in the array from the beginning, set the array index to 0  "i= 0" 
-        i < array.length means as long as i is less than the array length keep iterating through the for loop
+        The "i" variable is for the index in the arr where you are starting from 
+        (in this example we are starting at index 0 which is the first element of the arr. 
+        To check all the numbers in the arr from the beginning, set the arr index to 0  "i= 0" 
+        i < arr.length means as long as i is less than the arr length keep iterating through the for loop
         i++ means to add one more to the index, which is how it iterates through the numbers until it reaches the last number
-        (it knows when to reach the last number because of   i < array.length)
+        (it knows when to reach the last number because of   i < arr.length)
         */
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             
             /*
-            This varibale holds a number from the array using the index. 
+            This varibale holds a number from the arr using the index. 
             */
-            int currentNum = array[i];
+            int currentNum = arr[i];
             /* 
             If currentNum is greater than 0, add 1 to the positive counter 
             */
@@ -74,9 +74,9 @@ public class plusMinus {
             }
         }; 
         
-        BigDecimal totalNumsInArray = new BigDecimal(array.length);
+        BigDecimal totalNumsInArray = new BigDecimal(arr.length);
         /*Convert the number of postives, negatives, and zeroes outside of the for loop.(If it's inside the for loop, it will keep recalculating the answer.)
-        First convert the integer counters into BigDecimal counters, then for each divide by the total array length */
+        First convert the integer counters into BigDecimal counters, then for each divide by the total arr length */
         bigDecimalPositiveCounter = new BigDecimal(positiveCounter); 
         bigDecimalNegativeCounter = new BigDecimal(negativeCounter);
         bigDecimalZeroCounter = new BigDecimal(zeroCounter);

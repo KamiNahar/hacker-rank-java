@@ -33,9 +33,19 @@ public class findMiniMaxSumInArray {
     public static void main(String[] args) {
         
         
-        int[] arr = {2,1,5,3,4};
-        
+    int[] arr = {793810624, 895642170, 685903712, 623789054, 468592370};
+     
+// min=2572095760 
+// max=2999145560
     
+//Input (stdin)
+//793810624 895642170 685903712 623789054 468592370
+
+//Expected Output
+//2572095760 2999145560
+    
+    
+   
         
         miniMaxSum(arr);
         
@@ -54,125 +64,93 @@ public class findMiniMaxSumInArray {
     -take the largest 4 numbers and add all to get max 
     
     - first sort the array. go through the array and compare all the numbers to figure out which numbers are bigger and smaller  
-   
-    
-    
-    
+
     
     */  
         
     static void miniMaxSum(int[] arr) {
 
-      //To sort through the array, you need to compare each element to one another and then move the smaller element up in the index. 
-      int currentElement = 0; 
-      int nextElement = 0; 
-      //variables to store you min and max
-      int min = 0;
-      int max= 0;
-            
+        //To sort through the array, you need to compare each element to one another and then move the smaller element up in the index. 
+        int currentElement = 0;
+        int nextElement = 0;
+        //variables to store you min and max
+        int min = 0;
+        int max = 0;
+
 //sort the array 
 // where it says i = 0 ----remember 0 refers to the index number!!! 
 //arr.length refers to how many numbers are in the array, so in this example array.length = 5
-for (int i = 0; i < arr.length - 1; i++) {
+/* for (int i = 0; i < arr.length - 1; i++) {
     
     //Sort Array first.
     //reassign the currentElement value to an element by using the current index you are on in the for loop.
     currentElement = arr[i];
-    /*Reassign the nextElement value to the element next to the current element by using the index, 
-    plus 1 is how you get to the next index, thus next element */
+    //Reassign the nextElement value to the element next to the current element by using the index, 
+   // plus 1 is how you get to the next index, thus next element 
     nextElement = arr[i+1];
     
-    /*
-    the index is the location of the element in the array. For example arr[i+1] is the location. 
-    The element for example currentElement is the value. \
-    We are comparing the values and switching the values in the location to sort the numbers in the array. 
-    Notice we are not switching the locations, we never switch the locations, just the values. 
-    */
-    if (currentElement > nextElement) {
+ 
+    //the index is the location of the element in the array. For example arr[i+1] is the location. 
+    //The element for example currentElement is the value. \
+    //We are comparing the values and switching the values in the location to sort the numbers in the array. 
+    //Notice we are not switching the locations, we never switch the locations, just the values. 
+  
+//This does not work for all the numbers in the array, because its only comparing each number once instead of comparing to each number in the array.
+//This is how it is running through the for loop:
+//    69, 221, 7, 8974, 2
+//    69, 7, 221, 8974, 2
+//    69, 7, 221, 8974, 2
+//    69, 7, 221, 2, 8974
+    if (currentElement > nextElement) { 
     arr[i+1] = currentElement; 
     arr[i] = nextElement;
-    }
-    
-     }
+   }
+  
+         */
+//so try it in a for loop to see if that works 
+        for (int j = 0; j < arr.length; j++) {
+            for (int i = 0; i < arr.length - 1; i++) {
+
+                currentElement = arr[i];
+
+                nextElement = arr[i + 1];
+
+                if (currentElement > nextElement) {
+                    arr[i + 1] = currentElement;
+                    arr[i] = nextElement;
+                }
+            }
+        }
+
+
+        /*   
 //this is just to check if the array is sorted
 //this array sorter doesnt work with zeros and negatives, need to fix that! 
-//for (int i = 0; i < arr.length; i++) {
-//   System.out.print(arr[i]);  
-//}
- 
-//i = 0 is where you start the for loop in your array
-//and i < 3 is where you stop the for loop in your array
-for (int i = 0; i < 4; i++) {
- //first iteration of the for loop min = 0 + first element of the array which is arr[i] and arr[i] in the first iteration is really arr[0]
- //In the second iteration i is going to 1 so arr[i] turns into arr[1] and so forth. 
-    min = min + arr[i];
+for (int k = 0; k < arr.length; k++) {
+   System.out.print(arr[k] + " ");  //empty string places a space in between each number
 }
+         */
+//m = 0 is where you start the for loop in your array
+//and m < 4 is where you stop the for loop in your array
+        for (int m = 0; m < 4; m++) {
+            //first iteration of the for loop min = 0 + first element of the array which is arr[i] and arr[i] in the first iteration is really arr[0]
+            //In the second iteration i is going to 1 so arr[i] turns into arr[1] and so forth. 
+            min = min + arr[m];
+        }
 
-for (int i = 1; i < arr.length; i++) {
-    max = max + arr[i];
+        for (int n = 1; n < arr.length; n++) {
+            max = max + arr[n];
+        }
+
+        System.out.println(min + " " + max);
+
+    }
+
 }
-  
-System.out.println(min + "  " + max); 
-            
-            
-}
-}
     
     
-    
-    
-    
-    
- //this method will only work if the array is always ordered from smallest to biggest    
-//    static void miniMaxSum(int[] arr) {
-//    int min = 0; 
-//    int max = 0; 
-//    
-//min = arr[0] + arr[1] + arr[2] + arr[3]; 
-//max = arr[4] + arr[3] + arr[2] + arr[1];       
-//          System.out.println(min + "  " + max); 
-//          
-//          
-//          
-//    }
     
 
-
-  /*
-
-     int constant;  
-    //get the last element in the array
-    int lastElement = arr[arr.length - 1];
-    //get the first element in the array
-    int firstElement = arr[0]; 
-    int min = lastElement - firstElement;
-    int max = lastElement + firstElement;
-
-*/
-    //the nested for-loop is to compare the current element to the element before it. 
-    /* since i is set to 1, j = i is also 1, and as long as 1 is greater than 0 (j > 0), 
-    the j-- will subtract 1 from j until it no longer is greater than 0.
-    then the program will go through the next index in the outer for-loop which now is i =2.
-    and then do the same thing etc until it goes through all the numbers in the array.
-    
-    so if i = 2, and j = i that is also 2, and j-- will subtract 1 from j until it is no
-    longer greater than 0, and then it moves on to the next index number 3 because of the outer for-loop and continues until it goes through the full array. 
-    - and remember! when it goes through the index it is comparing the numbers because you are sorting it!!! 
-  
-    for (int j = i; j > 0; j--) {
-    
-        int num = arr[j];
-        /* going through each element in the array 
-        and comparing the first element to the element before the first element
-     if (arr[j] < arr[j-1]) {
-         //the constant variable holds each element the program is currently going through
-         constant = arr[j];
-         //
-         arr[j] = arr[j-1];
-         arr[j-1] = constant; 
-     }
-*/  
-    
       
       
       

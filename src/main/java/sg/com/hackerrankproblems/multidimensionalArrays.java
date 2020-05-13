@@ -20,11 +20,11 @@ public class multidimensionalArrays {
             }, 
             
             {
-                1,2,1 //row 1, element 0, 1, 2
+                4,5,6 //row 1, element 0, 1, 2
             },
             
             {
-                1,1,1 //row 2, element 0, 1, 2
+                9,8,9 //row 2, element 0, 1, 2
             }
   
         };
